@@ -1,5 +1,6 @@
 int p001();
+int p002();
 
 int p001_020_expected(int index);
 
-int (*p001_020_select())(int index);
+int (*p001_020_select(int index))();

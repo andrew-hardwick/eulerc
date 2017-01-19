@@ -6,7 +6,7 @@
 
 int main()
 {
-  int perf[] = {1};
+  int perf[] = {1, 2};
 
   int result = 0;
   int expec = 0;
@@ -28,7 +28,7 @@ int main()
     }
     else
     {
-      printf("%i: %i is incorrect, expected %i", perf[i], result, expec);
+      printf("%i: %i is incorrect, expected %i.\n", perf[i], result, expec);
     }
   }
   return 0; 
