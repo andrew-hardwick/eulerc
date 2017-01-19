@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include "p001_020.h"
 
-#define false 0
-#define true 1
-
 int main()
 {
   int perf[] = {1, 2};
@@ -11,16 +8,17 @@ int main()
   int result = 0;
   int expec = 0;
 
+  int (*func)();
+
   int i = 0;
   int count = sizeof(perf) / sizeof(int);
 
   for (i = 0; i < count; i++)
   {
-    int (*func)();
     func = p001_020_select(perf[i]);
-    
-    expec = p001_020_expected(perf[i]);
     result = func();
+
+    expec = p001_020_expected(perf[i]);
 
     if(expec == result)
     {
@@ -31,5 +29,6 @@ int main()
       printf("%i: %i is incorrect, expected %i.\n", perf[i], result, expec);
     }
   }
+
   return 0; 
 }
