@@ -5,7 +5,7 @@
 int p001()
 {
   int out = 0;
-
+	
   // i is the index value of the for loop
   int i = 0;
   for(i = 0; i < 1000; i++)
@@ -64,6 +64,25 @@ int p003()
   return 0;
 }
 
+int p004()
+{
+  int i, j;
+  int pal;
+  for(i = 999; i > 99; i--)
+  {
+    for(j = i; j > 99; j--)
+    {
+      pal = i * j;
+      if (isPalindrome(pal))
+      {
+        printf("two numbers are %d %d\n", i, j);
+        return pal;
+      }
+    }
+  }
+  return 0;
+}
+
 // Provide the expected result for formatting in main
 int p001_020_expected(int index)
 {
@@ -75,6 +94,8 @@ int p001_020_expected(int index)
       return 4613732;
     case 3:
       return 6857;
+    case 4:
+      return 906609;
     default:
       return 0;
   }
@@ -91,6 +112,8 @@ int (*p001_020_select(int index))()
       return &p002;
     case 3:
       return &p003;
+    case 4:
+      return &p004;
     default:
       return &p001;
   } 
