@@ -132,6 +132,25 @@ int p005()
   return num;
 }
 
+// Problem 6 - Sum square difference
+int p006()
+{
+  int sumsquare = 0;
+  int squaresum = 0;
+  
+  int i;
+
+  for(i = 1; i <= 100; i++)
+  {
+    sumsquare += (i * i);
+    squaresum += i;
+  } 
+
+  squaresum = squaresum * squaresum;
+
+  return squaresum - sumsquare;
+}
+
 // Provide the expected result for formatting in main
 int p001_020_expected(int index)
 {
@@ -147,6 +166,8 @@ int p001_020_expected(int index)
       return 906609;
     case 5:
       return 232792560;
+    case 6:
+      return 25164150;
     default:
       return 0;
   }
@@ -167,8 +188,9 @@ int (*p001_020_select(int index))()
       return &p004;
     case 5:
       return &p005;
+    case 6:
+      return &p006;
     default:
       return &p001;
   } 
-
 }

@@ -9,6 +9,7 @@ int p002();
 int p003();
 int p004();
 int p005();
+int p006();
 
 int p001_020_expected(int index);
 
