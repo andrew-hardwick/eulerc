@@ -34,7 +34,7 @@ int isPalindrome(int num)
     i++;
   }
 
-  for(i = 0; i < order / 2; i++)
+  for(i = 0; i <= order / 2; i++)
   {
     if (*(pal + i) != *(pal + (order - i)))
     {
@@ -42,7 +42,6 @@ int isPalindrome(int num)
       return 0;
     }
   }
-
   free(pal);
   return 1;
 }

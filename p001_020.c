@@ -68,6 +68,7 @@ int p004()
 {
   int i, j;
   int pal;
+  int largest = 0;
   for(i = 999; i > 99; i--)
   {
     for(j = i; j > 99; j--)
@@ -75,12 +76,14 @@ int p004()
       pal = i * j;
       if (isPalindrome(pal))
       {
-        printf("two numbers are %d %d\n", i, j);
-        return pal;
+        if (largest < pal)
+        {
+          largest = pal;
+        }
       }
     }
   }
-  return 0;
+  return largest;
 }
 
 // Provide the expected result for formatting in main
