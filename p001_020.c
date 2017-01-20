@@ -158,8 +158,13 @@ int p007()
   return genPrime(10001);
 }
 
+//Problem 8 - Largest product in a series
+int p008()
+{
+}
+
 // Provide the expected result for formatting in main
-int p001_020_expected(int index)
+long p001_020_expected(int index)
 {
   switch(index)
   {
@@ -177,6 +182,8 @@ int p001_020_expected(int index)
       return 25164150;
     case 7:
       return 104743;
+    case 8:
+      return 23514624000;
     default:
       return 0;
   }
@@ -201,6 +208,8 @@ int (*p001_020_select(int index))()
       return &p006;
     case 7:
       return &p007;
+    case 8:
+      return &p008;
     default:
       return &p001;
   } 

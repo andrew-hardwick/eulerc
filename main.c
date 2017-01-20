@@ -4,11 +4,11 @@
 int main()
 {
   // array that defines the problems to run
-  int perf[] = {1, 2, 3, 4, 5, 6, 7};
+  int perf[] = {1, 2, 3, 4, 5, 6, 7, 8};
 
   // actual and expected result
-  int result = 0;
-  int expec = 0;
+  long result = 0;
+  long expec = 0;
 
   // function pointer to the functions that compute the actual result
   int (*func)();

@@ -11,8 +11,9 @@ int p004();
 int p005();
 int p006();
 int p007();
+int p008();
 
-int p001_020_expected(int index);
+long p001_020_expected(int index);
 
 int (*p001_020_select(int index))();
 
