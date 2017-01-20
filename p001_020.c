@@ -129,6 +129,7 @@ int p005()
     i++;
   }
 
+  free(list);
   return num;
 }
 
