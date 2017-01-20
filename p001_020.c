@@ -152,6 +152,12 @@ int p006()
   return squaresum - sumsquare;
 }
 
+// Problem 7 - 10001st prime
+int p007()
+{
+  return genPrime(10001);
+}
+
 // Provide the expected result for formatting in main
 int p001_020_expected(int index)
 {
@@ -169,6 +175,8 @@ int p001_020_expected(int index)
       return 232792560;
     case 6:
       return 25164150;
+    case 7:
+      return 104743;
     default:
       return 0;
   }
@@ -191,6 +199,8 @@ int (*p001_020_select(int index))()
       return &p005;
     case 6:
       return &p006;
+    case 7:
+      return &p007;
     default:
       return &p001;
   } 
