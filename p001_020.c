@@ -1,5 +1,6 @@
 #include "p001_020.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 // Problem 1 - Multiples of 3 and 5
 int p001()
@@ -43,7 +44,7 @@ int p002()
   return out;
 }
 
-// Problem 3 - Largest Prime Factor
+// Problem 3 - Largest prime Factor
 int p003()
 {
   long i;
@@ -64,6 +65,7 @@ int p003()
   return 0;
 }
 
+// Problem 4 - Largest palindrome product
 int p004()
 {
   int i, j;
@@ -86,6 +88,50 @@ int p004()
   return largest;
 }
 
+// Problem 5 - Smallest multiple
+int p005()
+{
+  int i, j;
+  int num;
+  int *list = malloc(20 * sizeof(int));
+  for(i = 0; i < 20; i++)
+  {
+    *(list + i) = 0;
+  }
+
+  for(i = 2; i <= 20; i++)
+  {
+    num = i;
+    j = 0;
+    while(num != 1)
+    {
+      if (*(list + j) == 0)
+      {
+        *(list + j) = num;
+        num = 1;
+      }
+      else
+      {
+        if (num % *(list + j) == 0)
+        {
+          num = num / *(list + j);
+        }
+        j++;
+      }
+    }
+  } 
+  
+  i = 0;
+  num = 1;
+  while(*(list + i))
+  { 
+    num *= *(list + i);
+    i++;
+  }
+
+  return num;
+}
+
 // Provide the expected result for formatting in main
 int p001_020_expected(int index)
 {
@@ -99,6 +145,8 @@ int p001_020_expected(int index)
       return 6857;
     case 4:
       return 906609;
+    case 5:
+      return 232792560;
     default:
       return 0;
   }
@@ -117,7 +165,10 @@ int (*p001_020_select(int index))()
       return &p003;
     case 4:
       return &p004;
+    case 5:
+      return &p005;
     default:
       return &p001;
   } 
+
 }
