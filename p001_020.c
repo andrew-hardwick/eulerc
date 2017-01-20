@@ -1,4 +1,7 @@
-// Problem 1
+#include "p001_020.h"
+#include <stdio.h>
+
+// Problem 1 - Multiples of 3 and 5
 int p001()
 {
   int out = 0;
@@ -16,7 +19,7 @@ int p001()
   return out;
 }
 
-// Problem 2
+// Problem 2 - Even Fibonacci numbers
 int p002()
 {
   int out = 0;
@@ -40,6 +43,27 @@ int p002()
   return out;
 }
 
+// Problem 3 - Largest Prime Factor
+int p003()
+{
+  long i;
+  long val = 600851475143;
+  long root = sqrt(val); 
+  
+  for(i = root; i > 0; i--)
+  {
+    
+    if (val % i == 0)
+    {
+      if (isPrime(i))
+      {
+        return i;
+      }
+    } 
+  }
+  return 0;
+}
+
 // Provide the expected result for formatting in main
 int p001_020_expected(int index)
 {
@@ -49,6 +73,8 @@ int p001_020_expected(int index)
       return 233168;
     case 2:
       return 4613732;
+    case 3:
+      return 6857;
     default:
       return 0;
   }
@@ -63,6 +89,8 @@ int (*p001_020_select(int index))()
       return &p001;
     case 2:
       return &p002;
+    case 3:
+      return &p003;
     default:
       return &p001;
   } 
