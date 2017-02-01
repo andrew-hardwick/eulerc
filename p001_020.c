@@ -180,31 +180,44 @@ long p007()
 //Problem 8 - Largest product in a series
 long p008()
 {
+  //open file to read in sequence
   FILE* p8in = fopen("p8","r");
 
+  //allocate memory (file known to contain 1000 digits)
   int * arr = malloc(sizeof(int) * 1000);
 
+  //variables
   int i = 0;
   long largest = 0;
   long current = 0;
   int j = 0;
 
+  //read in data from file
 	for(i = 0; i < 1000; i++)
   {
     *(arr + i) = fgetc(p8in) - '0';
   } 
 
+  fclose(p8in);
+
+  //start from begginning and compute to last 13 long sequence
   for(i = 0; i < 987; i++)
   {
+    //init current each time through loop
     current = 1;
+    //compute the 13 long product
     for(j = i; j < i + 13; j++)
     {
+      //if we find a zero just stop computing
+      //we should be able to jump i forware here
       if(*(arr + j) == 0)
       {
         break;
       }
+      //cumulative multiplication
       current *= *(arr + j);
     }
+    //update largest is necessary
     if (current > largest)
     {
       largest = current;
@@ -217,6 +230,29 @@ long p008()
 //Problem 9 - Special Pythagorean triplet
 long p009()
 {
+  //variables
+  int a, b, c;
+
+  //for solution a < b < c
+
+  //since two entries must be greater than a it is bounded by 1/3 of 1000
+  for(a = 1; a < 334; a++)
+  {
+    //since one entry must be greater than b it is bounded by 1/2 of 1000
+    for(b = a + 1; b < 501; b++)
+    {
+      //c is computed based on the rule that a+b+c=1000
+      c = (1000 - a) - b;
+
+      //check for pythagorean triplet
+      if ((a * a) + (b * b) == (c * c))
+      {
+        return a * b * c;
+      } 
+    }
+  }
+
+  return 0;
 }
 
 // Provide the expected result for formatting in main
