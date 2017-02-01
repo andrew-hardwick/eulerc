@@ -224,6 +224,8 @@ long p008()
     }
   }
 
+  free(arr);
+
   return largest;
 }
 
