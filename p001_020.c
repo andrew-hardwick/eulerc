@@ -179,6 +179,7 @@ long p007()
   int i = 1;
   int val = 0;
 
+  //loop through and find the 10001st prime
   while (val != 10001)
   {
     i++;
@@ -197,7 +198,7 @@ long p007()
 long p008()
 {
   //open file to read in sequence
-  FILE* p8in = fopen("p8","r");
+  FILE* p8in = fopen("pdata/p8","r");
 
   //allocate memory (file known to contain 1000 digits)
   int * arr = malloc(sizeof(int) * 1000);
@@ -283,6 +284,7 @@ long p010()
   long val = 0;
   long sum = 0;
 
+  //loop through and sum all primes below 2000000
   while(i < index)
   {
     if(*(list + i))
@@ -296,6 +298,31 @@ long p010()
   free(list);
 
   return sum;
+}
+
+long p011()
+{
+  FILE* p11in = fopen("pdata/p11","r");
+
+  int i;
+  int* array = malloc(sizeof(int) * 400);
+
+  for(i = 0; i < 400; i++)
+  {
+    *(array + i) = (fgetc(p11in) - '0') * 10;
+    *(array + i) += fgetc(p11in) - '0'; 
+    fgetc(p11in);
+
+    printf("%d", *(array + i));
+
+    if(i % 20 == 0)
+    {
+      putchar('\n');
+    }
+  }
+
+  
+  return 0;
 }
 
 // Provide the expected result for formatting in main
@@ -323,6 +350,8 @@ long p001_020_expected(int index)
       return 31875000;
     case 10:
       return 142913828922;
+    case 11:
+      return 70600674;
     default:
       return 0;
   }
@@ -353,6 +382,8 @@ long (*p001_020_select(int index))()
       return &p009;
     case 10:
       return &p010;
+    case 11:
+      return &p011;
     default:
       return &p001;
   } 

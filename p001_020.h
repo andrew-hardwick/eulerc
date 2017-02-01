@@ -14,6 +14,7 @@ long p007();
 long p008();
 long p009();
 long p010();
+long p011();
 
 long p001_020_expected(int index);
 
