@@ -4,7 +4,7 @@
 int main()
 {
   // array that defines the problems to run
-  int perf[] = {9};
+  int perf[] = {7, 10};
 
   // actual and expected result
   long result = 0;

@@ -174,7 +174,21 @@ long p006()
 long p007()
 {
   //genPrime is a common function as it might be used later
-  return genPrime(10001);
+  char * primeList = genPrime(10001);
+
+  int i = 1;
+  int val = 0;
+
+  while (val != 10001)
+  {
+    i++;
+    if (*(primeList + i))
+    {
+      val++;
+    }
+  }
+
+  return i;
 }
 
 //Problem 8 - Largest product in a series

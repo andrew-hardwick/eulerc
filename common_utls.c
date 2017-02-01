@@ -48,7 +48,7 @@ int isPalindrome(int num)
 
 // returns a specific prime located at *index* in a list
 // of all prime numbers
-int genPrime(int index)
+char * genPrime(int index)
 {
   int count = index * 15;
   char* list = malloc(count);
@@ -74,18 +74,8 @@ int genPrime(int index)
     }
   }
 
-  i = 2;
-  val = 0;
-  while(val != index)
-  {
-    if (*(list + i))
-    {
-      val++;
-    }
-    i++;
-  }
+  *(list + 0) = 0x1;
+  *(list + 1) = 0x1;
 
-  free(list);
-
-  return i - 1;
+  return list;
 }
