@@ -7,4 +7,6 @@ int isPalindrome(int num);
 
 char*  genPrime(long index);
 
+int numFactors(long val);
+
 #endif

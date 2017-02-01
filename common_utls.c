@@ -49,8 +49,7 @@ int isPalindrome(int num)
   return 1;
 }
 
-// returns a specific prime located at *index* in a list
-// of all prime numbers
+// returns a list of prime numbers at least *index* long
 char * genPrime(long index)
 {
   long count = index * GEN_PRIME_LENGTH_MULTIPLIER;
@@ -81,4 +80,24 @@ char * genPrime(long index)
   *(list + 1) = 0x1;
 
   return list;
+}
+
+// returns count of factors
+int numFactors(long val)
+{
+  int count = 0;
+  int i;
+
+  //only have to test to sqrt of val and then double the factors
+  double root = sqrt(val);
+  for(i = 1; i <= root; i++)
+  {
+    if (val % i == 0)
+    {
+      count++;
+    }
+  }
+
+  //assumption is made that the number is not a clean square
+  return count * 2;
 }

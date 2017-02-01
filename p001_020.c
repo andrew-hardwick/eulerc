@@ -300,6 +300,7 @@ long p010()
   return sum;
 }
 
+//Problem 11 - Largest product in a grid
 long p011()
 {
   //open file for reading
@@ -360,6 +361,23 @@ long p011()
   return largest;
 }
 
+//Problem 12 - Highly divisible triangular numberj
+long p012()
+{
+  int i = 0;
+  long num = 0;
+  int count = 0;
+
+  //looking for 500 factors
+  while(count < 500)
+  {
+    num += i;
+    i++;
+    count = numFactors(num);
+  }
+  return num;
+}
+
 // Provide the expected result for formatting in main
 long p001_020_expected(int index)
 {
@@ -387,6 +405,8 @@ long p001_020_expected(int index)
       return 142913828922;
     case 11:
       return 70600674;
+    case 12:
+      return 76576500;
     default:
       return 0;
   }
@@ -419,6 +439,8 @@ long (*p001_020_select(int index))()
       return &p010;
     case 11:
       return &p011;
+    case 12:
+      return &p012;
     default:
       return &p001;
   } 
