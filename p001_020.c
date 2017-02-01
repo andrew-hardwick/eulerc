@@ -302,27 +302,62 @@ long p010()
 
 long p011()
 {
+  //open file for reading
   FILE* p11in = fopen("pdata/p11","r");
 
-  int i;
+  //i and j are counting variables
+  int i, j;
+  //array stores the data
   int* array = malloc(sizeof(int) * 400);
 
+  long current = 0;
+  long largest = 0;
+
+  //read in the data from the file
   for(i = 0; i < 400; i++)
   {
     *(array + i) = (fgetc(p11in) - '0') * 10;
     *(array + i) += fgetc(p11in) - '0'; 
     fgetc(p11in);
+  }
 
-    printf("%d", *(array + i));
+  //close the file
+  fclose(p11in);
 
-    if(i % 20 == 0)
+  //multiply and find the largest
+  for(i = 3; i < 20; i++)
+  {
+    for(j = 3; j < 20; j++)
     {
-      putchar('\n');
+      //only i direction (negative)
+      current = *(array + j + (i * 20)) * *(array + j + ((i - 1) * 20)) * *(array + j + ((i - 2) * 20)) * *(array + j + ((i - 3) * 20)); 
+
+      largest = current > largest ? current : largest;
+
+      //both i and j directions (negative)
+      current = *(array + j + (i * 20)) * *(array + (j - 1) + ((i - 1) * 20)) * *(array + (j - 2) + ((i - 2) * 20)) * *(array + (j - 3) + ((i - 3) * 20));
+
+      largest = current > largest ? current : largest;
+
+      //only j direction (negative)
+      current = *(array + j + (i * 20)) * *(array + (j - 1) + (i * 20)) * *(array + (j - 2) + (i * 20)) * *(array + (j - 3) + (i * 20));
+
+      largest = current > largest ? current : largest;
+
+      //both i and j directions (i positive and j negative)
+      if (i + 3 < 20)
+      {
+        current = *(array + j + (i * 20)) * *(array + (j - 1) + ((i + 1) * 20)) * *(array + (j - 2) + ((i + 2) * 20)) * *(array + (j - 3) + ((i + 3) * 20));
+
+        largest = current > largest ? current : largest;
+      }
     }
   }
 
+  //free the temp array
+  free(array);
   
-  return 0;
+  return largest;
 }
 
 // Provide the expected result for formatting in main
