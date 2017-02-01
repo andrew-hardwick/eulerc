@@ -188,6 +188,8 @@ long p007()
     }
   }
 
+  free(primeList);
+
   return i;
 }
 
@@ -271,6 +273,31 @@ long p009()
   return 0;
 }
 
+//Problem 10 - Summation of primes
+long p010()
+{
+  long index = 2000000;
+  char* list = genPrime(index);
+
+  long i = 2;
+  long val = 0;
+  long sum = 0;
+
+  while(i < index)
+  {
+    if(*(list + i))
+    {
+      sum += i;
+      val++;
+    }
+    i++;
+  } 
+
+  free(list);
+
+  return sum;
+}
+
 // Provide the expected result for formatting in main
 long p001_020_expected(int index)
 {
@@ -294,6 +321,8 @@ long p001_020_expected(int index)
       return 23514624000;
     case 9:
       return 31875000;
+    case 10:
+      return 142913828922;
     default:
       return 0;
   }
@@ -322,6 +351,8 @@ long (*p001_020_select(int index))()
       return &p008;
     case 9:
       return &p009;
+    case 10:
+      return &p010;
     default:
       return &p001;
   } 

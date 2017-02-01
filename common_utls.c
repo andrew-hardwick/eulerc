@@ -3,6 +3,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+//this value is tuned to the lowest value that still adequately solves the primes problems
+#define GEN_PRIME_LENGTH_MULTIPLIER 11
+
 int isPrime(int num)
 {
   int root = sqrt(num);
@@ -48,15 +51,15 @@ int isPalindrome(int num)
 
 // returns a specific prime located at *index* in a list
 // of all prime numbers
-char * genPrime(int index)
+char * genPrime(long index)
 {
-  int count = index * 15;
+  long count = index * GEN_PRIME_LENGTH_MULTIPLIER;
   char* list = malloc(count);
 
-  int i;
-  int j;
-  int val;
-  int root = sqrt(count);
+  long i;
+  long j;
+  long val;
+  long root = sqrt(count);
 
   for(i = 0; i < count; i++)
   {
@@ -74,7 +77,7 @@ char * genPrime(int index)
     }
   }
 
-  *(list + 0) = 0x1;
+  *(list + 0) = 0x0;
   *(list + 1) = 0x1;
 
   return list;

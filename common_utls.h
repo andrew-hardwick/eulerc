@@ -5,6 +5,6 @@ int isPrime(int num);
 
 int isPalindrome(int num);
 
-char*  genPrime(int index);
+char*  genPrime(long index);
 
 #endif
