@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 // Problem 1 - Multiples of 3 and 5
-int p001()
+long p001()
 {
   int out = 0;
 	
@@ -21,7 +21,7 @@ int p001()
 }
 
 // Problem 2 - Even Fibonacci numbers
-int p002()
+long p002()
 {
   int out = 0;
 
@@ -45,7 +45,7 @@ int p002()
 }
 
 // Problem 3 - Largest prime Factor
-int p003()
+long p003()
 {
   //i counting, val is target, root is count limit
   long i;
@@ -69,7 +69,7 @@ int p003()
 }
 
 // Problem 4 - Largest palindrome product
-int p004()
+long p004()
 {
   //i and j are the operands
   int i, j;
@@ -101,7 +101,7 @@ int p004()
 }
 
 // Problem 5 - Smallest multiple
-int p005()
+long p005()
 {
   int i, j;
   int num;
@@ -146,7 +146,7 @@ int p005()
 }
 
 // Problem 6 - Sum square difference
-int p006()
+long p006()
 {
   //sumsquare will be the sum of squares
   int sumsquare = 0;
@@ -171,14 +171,51 @@ int p006()
 }
 
 // Problem 7 - 10001st prime
-int p007()
+long p007()
 {
   //genPrime is a common function as it might be used later
   return genPrime(10001);
 }
 
 //Problem 8 - Largest product in a series
-int p008()
+long p008()
+{
+  FILE* p8in = fopen("p8","r");
+
+  int * arr = malloc(sizeof(int) * 1000);
+
+  int i = 0;
+  long largest = 0;
+  long current = 0;
+  int j = 0;
+
+	for(i = 0; i < 1000; i++)
+  {
+    *(arr + i) = fgetc(p8in) - '0';
+  } 
+
+  for(i = 0; i < 987; i++)
+  {
+    current = 1;
+    for(j = i; j < i + 13; j++)
+    {
+      if(*(arr + j) == 0)
+      {
+        break;
+      }
+      current *= *(arr + j);
+    }
+    if (current > largest)
+    {
+      largest = current;
+    }
+  }
+
+  return largest;
+}
+
+//Problem 9 - Special Pythagorean triplet
+long p009()
 {
 }
 
@@ -203,13 +240,15 @@ long p001_020_expected(int index)
       return 104743;
     case 8:
       return 23514624000;
+    case 9:
+      return 31875000;
     default:
       return 0;
   }
 }
 
 // return the function pointer for a specific problem
-int (*p001_020_select(int index))()
+long (*p001_020_select(int index))()
 {
   switch (index)
   {
@@ -229,6 +268,8 @@ int (*p001_020_select(int index))()
       return &p007;
     case 8:
       return &p008;
+    case 9:
+      return &p009;
     default:
       return &p001;
   } 

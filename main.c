@@ -4,14 +4,14 @@
 int main()
 {
   // array that defines the problems to run
-  int perf[] = {1, 2, 3, 4, 5, 6, 7, 8};
+  int perf[] = {9};
 
   // actual and expected result
   long result = 0;
   long expec = 0;
 
   // function pointer to the functions that compute the actual result
-  int (*func)();
+  long (*func)();
 
   // i is index for for loop. count is number of items in problem array
   int i = 0;
@@ -29,11 +29,11 @@ int main()
     // output the result in a readable format
     if(expec == result)
     {
-      printf("%i: %i is correct.\n", perf[i], result);
+      printf("%i: %li is correct.\n", perf[i], result);
     }
     else
     {
-      printf("%i: %i is incorrect, expected %i.\n", perf[i], result, expec);
+      printf("%i: %li is incorrect, expected %li.\n", perf[i], result, expec);
     }
   }
 
