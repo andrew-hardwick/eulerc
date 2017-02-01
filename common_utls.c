@@ -85,5 +85,7 @@ int genPrime(int index)
     i++;
   }
 
+  free(list);
+
   return i - 1;
 }

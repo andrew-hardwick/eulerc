@@ -47,20 +47,23 @@ int p002()
 // Problem 3 - Largest prime Factor
 int p003()
 {
+  //i counting, val is target, root is count limit
   long i;
   long val = 600851475143;
   long root = sqrt(val); 
-  
+ 
+  //only have to loop root times
   for(i = root; i > 0; i--)
   {
-    
+    //if i is a factor of val
     if (val % i == 0)
     {
+      //check if it's prime
       if (isPrime(i))
       {
         return i;
       }
-    } 
+    }     
   }
   return 0;
 }
@@ -68,14 +71,23 @@ int p003()
 // Problem 4 - Largest palindrome product
 int p004()
 {
+  //i and j are the operands
   int i, j;
+  //pal will store the product
   int pal;
+  //largest will store the largest palindrome product we've found
   int largest = 0;
+
+  //only need three digit numbers
   for(i = 999; i > 99; i--)
   {
+    //loop down from i to reduce computations
     for(j = i; j > 99; j--)
     {
+      //multiply
       pal = i * j;
+
+      //check if the product is a palindrome
       if (isPalindrome(pal))
       {
         if (largest < pal)
@@ -136,25 +148,32 @@ int p005()
 // Problem 6 - Sum square difference
 int p006()
 {
+  //sumsquare will be the sum of squares
   int sumsquare = 0;
+  //squaresum will be the square of sums
   int squaresum = 0;
   
+  //i is counting variable
   int i;
 
+  //loop through once
   for(i = 1; i <= 100; i++)
   {
     sumsquare += (i * i);
     squaresum += i;
   } 
 
+  //square the sum
   squaresum = squaresum * squaresum;
 
+  //return the difference
   return squaresum - sumsquare;
 }
 
 // Problem 7 - 10001st prime
 int p007()
 {
+  //genPrime is a common function as it might be used later
   return genPrime(10001);
 }
 
