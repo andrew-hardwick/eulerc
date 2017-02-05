@@ -19,7 +19,7 @@ long p001()
   }
   return out;
 }
-
+ 
 // Problem 2 - Even Fibonacci numbers
 long p002()
 {
@@ -378,6 +378,45 @@ long p012()
   return num;
 }
 
+long p013()
+{
+  return 0;
+}
+
+long p014()
+{
+  long ret = 0;
+  long largest = 0;
+  long current = 0;
+  long val = 0;
+  long i = 0;
+
+  for(i = 1; i < 1000000; i++)
+  {
+    current = 0;
+    val = i;
+    while (val != 1)
+    {
+      if (val % 2 == 0)
+      {
+        val = val / 2;
+      }
+      else
+      {
+        val = (3 * val) + 1;
+      }
+      current++;
+    } 
+    if (current > largest)
+    {
+      largest = current;
+      ret = i;
+    }
+  }
+
+	return ret;
+}
+
 // Provide the expected result for formatting in main
 long p001_020_expected(int index)
 {
@@ -407,6 +446,10 @@ long p001_020_expected(int index)
       return 70600674;
     case 12:
       return 76576500;
+    case 13:
+      return 5537376230;
+    case 14:
+      return 837799;
     default:
       return 0;
   }
@@ -441,6 +484,10 @@ long (*p001_020_select(int index))()
       return &p011;
     case 12:
       return &p012;
+    case 13:
+      return &p013;
+    case 14:
+      return &p014;
     default:
       return &p001;
   } 
