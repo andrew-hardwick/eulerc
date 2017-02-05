@@ -383,6 +383,7 @@ long p013()
   return 0;
 }
 
+//Problem 14 - Longest Collatz sequence
 long p014()
 {
   long ret = 0;
@@ -391,30 +392,43 @@ long p014()
   long val = 0;
   long i = 0;
 
+  //test all numbers below 1000000
   for(i = 1; i < 1000000; i++)
   {
+    //reset current and skip all even entries
     current = 0;
-    val = i;
-    while (val != 1)
+    if (val % 2 != 0)
     {
-      if (val % 2 == 0)
+      val = i;
+      //perform the sequence
+      while (val != 1)
       {
-        val = val / 2;
+        if (val % 2 == 0)
+        {
+          val = val / 2;
+        }
+        else
+        {
+          val = (3 * val) + 1;
+        }
+        //maintain the conut
+        current++;
       }
-      else
+      //if we found a new bigger one, save it
+      if (current > largest)
       {
-        val = (3 * val) + 1;
+        largest = current;
+        ret = i;
       }
-      current++;
-    } 
-    if (current > largest)
-    {
-      largest = current;
-      ret = i;
     }
   }
 
 	return ret;
+}
+
+long p015()
+{
+  return 0;
 }
 
 // Provide the expected result for formatting in main
@@ -450,6 +464,8 @@ long p001_020_expected(int index)
       return 5537376230;
     case 14:
       return 837799;
+    case 15:
+      return 137846528820;
     default:
       return 0;
   }
@@ -488,6 +504,8 @@ long (*p001_020_select(int index))()
       return &p013;
     case 14:
       return &p014;
+    case 15:
+      return &p015;
     default:
       return &p001;
   } 
