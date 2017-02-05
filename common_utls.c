@@ -101,3 +101,16 @@ int numFactors(long val)
   //assumption is made that the number is not a clean square
   return count * 2;
 }
+
+int* allocateBigInt()
+{
+  return malloc(sizeof(int) * BIGINT_LENGTH);
+}
+
+int* convertStringToBigInt(char*)
+{
+  int* ret = allocateBigInt();
+
+  //convert
+  return ret;
+}

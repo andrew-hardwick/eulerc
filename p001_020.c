@@ -378,8 +378,31 @@ long p012()
   return num;
 }
 
+//Large sum
 long p013()
 {
+  //open file for reading
+  FILE* p11in = fopen("pdata/p13","r");
+
+  //i and j are counting variables
+  int i, j;
+  //array stores the data
+  int* array = malloc(sizeof(int) * 400);
+
+  long current = 0;
+  long largest = 0;
+
+  //read in the data from the file
+  fgetc(p11in);
+
+  for (i = 0; i < 100; i++)
+  {
+    for (j = 0; j < 50; j++)
+    {
+      
+    }
+  }
+
   return 0;
 }
 
