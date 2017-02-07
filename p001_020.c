@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include "bigint.h"
 
 // Problem 1 - Multiples of 3 and 5
 long p001()
