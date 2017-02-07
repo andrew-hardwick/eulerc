@@ -1,6 +1,7 @@
 #include "p001_020.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 // Problem 1 - Multiples of 3 and 5
 long p001()
@@ -387,23 +388,43 @@ long p013()
   //i and j are counting variables
   int i, j;
   //array stores the data
-  int* array = malloc(sizeof(int) * 400);
+  char* buffer = malloc(sizeof(char) * 60);
+  size_t bufLength = 60;
 
-  long current = 0;
-  long largest = 0;
+  BIGINT temp = allocateBigInt();
+
+  long value = 0;
+  int digitCount = 0;
 
   //read in the data from the file
-  fgetc(p11in);
-
-  for (i = 0; i < 100; i++)
+  for(i = 0; i < 100; i++)
   {
-    for (j = 0; j < 50; j++)
-    {
-      
-    }
+    getline(&buffer, &bufLength, p11in);
+
+    addBigInt(temp, convertStringToBigInt(buffer, 50));
   }
 
-  return 0;
+  i = BIGINT_LENGTH - 1;
+  while(*(temp + i) == 0)
+  {
+    i--;
+  }
+
+  while(value < 10000000000)
+  {
+    value = value * BIGINT_CELL;
+    value += *(temp + i);
+    i--;
+  }
+  
+  digitCount = log10(value);
+  
+  for(; digitCount >= 10; digitCount--)
+  {
+    value = value / 10;
+  }
+
+  return value;
 }
 
 //Problem 14 - Longest Collatz sequence
