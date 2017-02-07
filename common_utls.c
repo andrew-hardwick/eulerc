@@ -107,7 +107,7 @@ int* allocateBigInt()
   return malloc(sizeof(int) * BIGINT_LENGTH);
 }
 
-int* convertStringToBigInt(char*)
+int* convertStringToBigInt(char* input)
 {
   int* ret = allocateBigInt();
 
