@@ -113,3 +113,9 @@ void balanceBigInt(BIGINT val)
   
   *(val + (BIGINT_LENGTH - 1)) = *(val + (BIGINT_LENGTH - 1)) % BIGINT_CELL;
 }
+
+void addScalarToBigInt(BIGINT value, int scalar)
+{
+  *(value) += scalar;
+  balanceBigInt(value);
+}

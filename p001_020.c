@@ -476,6 +476,41 @@ long p015()
   return 0;
 }
 
+long p020()
+{
+  BIGINT value = allocateBigInt();
+  int i;
+  long outVal = 0;
+
+  addScalarToBigInt(value, 1);
+  
+  for(i = 1; i <= 100; i++)
+  {
+    multiplyBigIntByScalar(value, i);
+  }
+
+  i = BIGINT_LENGTH;
+  while (*(value + i) == 0)
+  {
+    i--;
+  }
+
+  i++;
+
+  outVal = 0;
+  while (i > 0)
+  {
+    while(*(value + i) != 0)
+    {
+      outVal += *(value + i) % 10;
+      *(value + i ) = *(value + i) / 10;
+    }
+    i--;
+  }
+
+  return outVal;
+}
+
 // Provide the expected result for formatting in main
 long p001_020_expected(int index)
 {
@@ -511,6 +546,8 @@ long p001_020_expected(int index)
       return 837799;
     case 15:
       return 137846528820;
+    case 20:
+      return 648;
     default:
       return 0;
   }
@@ -551,6 +588,8 @@ long (*p001_020_select(int index))()
       return &p014;
     case 15:
       return &p015;
+    case 20:
+      return &p020;
     default:
       return &p001;
   } 

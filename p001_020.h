@@ -20,6 +20,9 @@ long p013();
 long p014();
 long p015();
 
+
+long p020();
+
 long p001_020_expected(int index);
 
 long (*p001_020_select(int index))();
